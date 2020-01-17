@@ -1,10 +1,33 @@
 import React, { Component } from "react";
+import FormError from './FormError';
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor() {
+    super();
+    this.state = {
+      displayName: '',
+      email: '',
+      passOne: '',
+      passTwo: '',
+      errorMessage: null
+    };
+
+    this.handleChange = this.handleChange.bind(this);
   }
+  handleChange(e) {
+    const itemName = e.target.name;
+    const itemValue = e.target.value;
+
+    this.setState({ [itemName]: itemValue}, () => {
+      if (this.state.passOne !== this.state.passTwo){
+        this.setState( {errorMessage: 'passwords do not match'});
+      }
+      else{
+        this.setState({errorMessage: null});
+      }
+    });
+  }
+
   render() {
     return (
       <form className="mt-3">
@@ -15,6 +38,9 @@ class Register extends Component {
               <div className="card-body">
                 <h3 className="font-weight-light mb-3">Register</h3>
                 <div className="form-row">
+                  { (this.state.errorMessage !== null) ? (
+                    <FormError theMessage={this.state.errorMessage} />
+                  ) : null}
                   <section className="col-sm-12 form-group">
                     <label className="form-control-label sr-only" htmlFor="displayName">Display Name</label>
                     <input
@@ -24,6 +50,8 @@ class Register extends Component {
                       placeholder="Display Name"
                       name="displayName"
                       required
+                      value={this.state.displayName}
+                      onChange={this.handleChange}
                     />
                   </section>
                 </div>
@@ -36,6 +64,8 @@ class Register extends Component {
                     placeholder="Email Address"
                     name="email"
                     required
+                    value={this.state.email}
+                      onChange={this.handleChange}
                   />
                 </section>
                 <div className="form-row">
@@ -45,6 +75,8 @@ class Register extends Component {
                       type="password"
                       name="passOne"
                       placeholder="Password"
+                      value={this.state.passOne}
+                      onChange={this.handleChange}
                     />
                   </section>
                   <section className="col-sm-6 form-group">
@@ -54,6 +86,8 @@ class Register extends Component {
                       required
                       name="passTwo"
                       placeholder="Repeat Password"
+                      value={this.state.passTwo}
+                      onChange={this.handleChange}
                     />
                   </section>
                 </div>
