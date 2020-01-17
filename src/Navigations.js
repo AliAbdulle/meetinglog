@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {FaUsers} from 'react-icons/fa';
+import {Link} from '@reach/router';
 
-class Navigation extends Component {
+class Navigations extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -9,34 +10,34 @@ class Navigation extends Component {
   render() {
     const { user } = this.props;
     return (
-    <nav class="site-nav navbar navbar-expand bg-primary navbar-dark">
-      <div class="container-fluid">
-        <a href="/"class="navbar-brand">
+    <nav className="site-nav navbar navbar-expand bg-primary navbar-dark">
+      <div className="container-fluid">
+        <Link to="/"className="navbar-brand">
             <FaUsers className="mr-1" /> Meeting Log
-            </a>
-        <div class="navbar-nav ml-auto">
+            </Link>
+        <div className="navbar-nav ml-auto">
         {user && (
-              <a
-              class="nav-item nav-link"
-              href="/meetings"  >meetings</a>
+              <Link
+              className="nav-item nav-link"
+              to="/meetings"  >meetings</Link>
         )}
           {!user && (
-                    <a
-                    class="nav-item nav-link"
-                    href="/login">log in</a>
+                    <Link
+                    className="nav-item nav-link"
+                    to="/login">log in</Link>
           )}
           {!user && (
 
-          <a
-            class="nav-item nav-link"
-            href="/register">register</a>
+          <Link
+            className="nav-item nav-link"
+            to="/register">register</Link>
           )}
           {user && (
 
-          <a
-            class="nav-item nav-link" href="login">
+          <Link
+            className="nav-item nav-link" to="login">
             logout
-          </a>
+          </Link>
           )}
         </div>
       </div>
@@ -46,4 +47,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default Navigations;
