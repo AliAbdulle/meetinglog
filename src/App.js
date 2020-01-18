@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import {Router, navigate} from '@reach/router';
-import firebase from './Firebase.js';
+import React, { Component } from "react";
+import { Router, navigate } from "@reach/router";
+import firebase from "./Firebase.js";
 
-
-import Home from './Home';
-import Welcome from './Welcome';
-import Navigations from './Navigations';
-import Login from './Login';
-import Register from './Register';
-import Meetings from './Meetings' ;
+import Home from "./Home";
+import Welcome from "./Welcome";
+import Navigations from "./Navigations";
+import Login from "./Login";
+import Register from "./Register";
+import Meetings from "./Meetings";
 
 class App extends Component {
   constructor() {
@@ -17,42 +16,66 @@ class App extends Component {
       user: null,
       displayName: null,
       userID: null
-    }
+    };
   }
-  componentDidMount(){
-    const ref = firebase.database().ref('user');
-
-    ref.on('value', snapshot => {
-      let FBuser = snapshot.val();
-      this.setState({user: FBuser});
-    })
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(FBUser => {
+      if (FBUser) {
+        this.setState({
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
+        });
+      }
+    });
   }
 
   registerUser = userName => {
-    firebase.auth().onAuthStateChanged(FBuser => {
-      FBuser.updateProfile({
+    firebase.auth().onAuthStateChanged(FBUser => {
+      FBUser.updateProfile({
         displayName: userName
       }).then(() => {
         this.setState({
-          user: FBuser,
-          displayName: FBuser.displayName,
-          userID: FBuser.uid
+          user: FBUser,
+          displayName: FBUser.displayName,
+          userID: FBUser.uid
         });
-        navigate('./meetings');
-      })
-    })
-  }
+        navigate("./meetings");
+      });
+    });
+  };
+
+  logoutUser = e => {
+    e.preventDefault();
+    this.setState({
+      displayName: null,
+      userID: null,
+      user: null
+    });
+
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        navigate("./login");
+      });
+  };
+
   render() {
     return (
       <div>
-        <Navigations user={this.state.user}/>
-        {this.state.user &&<Welcome user={this.state.displayName}/>}
+        <Navigations user={this.state.user} logoutUser={this.logoutUser} />
+        {this.state.user && (
+          <Welcome
+            userName={this.state.displayName}
+            logoutUser={this.logoutUser}
+          />
+        )}
         <Router>
-
-        <Home path="/" user={this.state.user}/>
-        <Login path="/login" user={this.state.user}/>
-        <Meetings path="/meetings" />
-        <Register path="/register" registerUser = {this.registerUser} />
+          <Home path="/" user={this.state.user} />
+          <Login path="/login" user={this.state.user} />
+          <Meetings path="/meetings" />
+          <Register path="/register" registerUser={this.registerUser} />
         </Router>
       </div>
     );

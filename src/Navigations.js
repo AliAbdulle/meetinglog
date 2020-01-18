@@ -8,7 +8,7 @@ class Navigations extends Component {
     this.state = {};
   }
   render() {
-    const { user } = this.props;
+    const { user, logOutUser} = this.props;
     return (
     <nav className="site-nav navbar navbar-expand bg-primary navbar-dark">
       <div className="container-fluid">
@@ -35,7 +35,8 @@ class Navigations extends Component {
           {user && (
 
           <Link
-            className="nav-item nav-link" to="login">
+            className="nav-item nav-link" to="/login"
+            onClick={e => logOutUser(e)}>
             logout
           </Link>
           )}
