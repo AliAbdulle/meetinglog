@@ -3,9 +3,10 @@ import React, { Component } from "react";
 class FormError extends Component {
   render() {
     const { theMessage } = this.props;
-    return <div className="col-12  alart alart-denger px-2">
+    return ( <div className="col-12  alart alart-da nger px-2">
         {theMessage}
-    </div>;
+    </div>
+    )
   }
 }
 export default FormError;

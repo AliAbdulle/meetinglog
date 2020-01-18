@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Router} from '@reach/router';
+import {Router, navigate} from '@reach/router';
 import firebase from './Firebase.js';
 
 
@@ -14,7 +14,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: null
+      user: null,
+      displayName: null,
+      userID: null
     }
   }
   componentDidMount(){
@@ -26,18 +28,31 @@ class App extends Component {
     })
   }
 
-
+  registerUser = userName => {
+    firebase.auth().onAuthStateChanged(FBuser => {
+      FBuser.updateProfile({
+        displayName: userName
+      }).then(() => {
+        this.setState({
+          user: FBuser,
+          displayName: FBuser.displayName,
+          userID: FBuser.uid
+        });
+        navigate('./meetings');
+      })
+    })
+  }
   render() {
     return (
       <div>
         <Navigations user={this.state.user}/>
-        {this.state.user &&<Welcome user={this.state.user}/>}
+        {this.state.user &&<Welcome user={this.state.displayName}/>}
         <Router>
 
         <Home path="/" user={this.state.user}/>
         <Login path="/login" user={this.state.user}/>
         <Meetings path="/meetings" />
-        <Register path="/register" />
+        <Register path="/register" registerUser = {this.registerUser} />
         </Router>
       </div>
     );
