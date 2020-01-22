@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import MeetingList from './MeetingList';
 
 class Meetings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meetingName: ''
+      meetingName: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,45 +21,64 @@ class Meetings extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addMeeting(this.state.meetingName);
-    this.setState({meetingName: ""});
+    this.setState({ meetingName: "" });
   }
   render() {
     return (
       <div className="container mt-4">
-    <div className="row justify-content-center">
-      <div className="col-12 col-md-9 col-lg-7">
-        <h1 className="font-weight-light text-center">Add a Meeting</h1>
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-9 col-lg-7">
+            <h1 className="font-weight-light text-center">Add a Meeting</h1>
 
-        <div className="card bg-light">
-          <div className="card-body text-center">
-            <form className="formgroup" onSubmit={this.handleSubmit}>
-              <div className="input-group input-group-lg">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="meetingName"
-                  placeholder="Meeting name"
-                  aria-describedby="buttonAdd"
-                  value={this.state.meetingName}
-                  onChange={this.handleChange}
-                />
-                <div className="input-group-append">
-                  <button
-                    type="submit"
-                    className="btn btn-sm btn-info"
-                    id="buttonAdd"
-                  >
-                    +
-                  </button>
-                </div>
+            <div className="card bg-light">
+              <div className="card-body text-center">
+                <form className="formgroup" onSubmit={this.handleSubmit}>
+                  <div className="input-group input-group-lg">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="meetingName"
+                      placeholder="Meeting name"
+                      aria-describedby="buttonAdd"
+                      value={this.state.meetingName}
+                      onChange={this.handleChange}
+                    />
+                    <div className="input-group-append">
+                      <button
+                        type="submit"
+                        className="btn btn-sm btn-info"
+                        id="buttonAdd"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
+          </div>
+
+              </div>
+          <div clasName="col-11 col-md-6 text-center">
+            <div className="card border-top-0 round-0">
+              {this.props.meetings && this.props.meetings.length ? (
+                <div className="card-body py-2">
+                  <hi clasName="card-title font-weight-light m-0">
+                    Your Meetings
+                  </hi>
+                </div>
+              ) : null}
+
+              {this.props.meetings && (
+                <div className="list-group list-group-flush">
+                  <MeetingList meetings={this.props.meetings} />
+
+                </div>
+              )}
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    )
+    );
   }
 }
 
