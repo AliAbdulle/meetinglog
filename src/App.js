@@ -8,6 +8,7 @@ import Navigations from "./Navigations";
 import Login from "./Login";
 import Register from "./Register";
 import Meetings from "./Meetings";
+import Checkin from "./Checkin";
 
 class App extends Component {
   constructor(props) {
@@ -103,6 +104,10 @@ class App extends Component {
             meetings={this.state.meetings}
             addMeeting={this.addMeeting}
             userID={this.state.userID}
+          />
+          <Checkin
+            path="/checkin/:userID/:meetingID"
+            
           />
           <Register path="/register" registerUser={this.registerUser} />
         </Router>

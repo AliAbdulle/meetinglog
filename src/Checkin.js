@@ -37,7 +37,60 @@ class Checkin extends Component {
   render() {
 
     return (
-    
+
+        <form
+    className="mt-3" onSubmit={this.handleSubmit}>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-lg-6">
+          <div className="card bg-light">
+            <div className="card-body">
+              <h3 className="font-weight-light mb-3">Check in</h3>
+              <section className="form-group">
+                <label
+                  className="form-control-label sr-only"
+                  for="displayName"
+                >Name</label>
+                <input
+                  required
+                  className="form-control"
+                  type="text"
+                  id="displayName"
+                  name="displayName"
+                  placeholder="Name"
+                  value={this.state.displayName}
+                  onChange={this.handleChange}
+                />
+              </section>
+              <section className="form-group">
+                <label
+                  className="form-control-label sr-only"
+                  htmlFor="Email"
+                >Email</label>
+                <input
+                  required
+                  className="form-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </section>
+              <div className="form-group text-right mb-0">
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                >Check in</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
     )
   }
 }
