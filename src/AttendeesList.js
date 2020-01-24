@@ -2,12 +2,14 @@ import React, { Component } from "react";
 
 class AttendeesList extends Component {
   constructor(props) {
-    super(props);
+    super();
   }
 
   render() {
     const attendees = this.props.attendees;
     const myAttendees = attendees.map(item => {
+      return (
+        <div>
       <div className="col-8 col-sm-6 col-md-4 col-lg-3 mb-2 p-0 px-1"
       key={item.attendeeID}
       >
@@ -16,12 +18,14 @@ class AttendeesList extends Component {
             <div>{item.attendeeName}</div>
           </div>
         </div>
-      </div>;
-    });
+      </div>
+      </div>
+      )
+    })
 
     return (
-        <div className="row justify-content-center">{myAttendees}</div>;
-    );
+        <div className="row justify-content-center">{myAttendees}</div>
+    )
   }
 }
 

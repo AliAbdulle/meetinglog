@@ -27,7 +27,7 @@ class Meetings extends Component {
     return (
       <div className="container mt-4">
         <div className="row justify-content-center">
-          <div className="col-12 col-md-9 col-lg-7">
+            <div className="col-12 col-md-9 col-lg-7">
             <h1 className="font-weight-light text-center">Add a Meeting</h1>
 
             <div className="card bg-light">
