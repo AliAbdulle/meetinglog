@@ -9,12 +9,14 @@ class Attendees extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayName: []
+            displayAttendees: []
         }
     }
 
     componentDidMount(){
-        const ref = firebase.database().ref(`meetings/${this.props.userID}/${this.props.meetingID}/attendees`);
+        const ref = firebase
+        .database()
+        .ref(`meetings/${this.props.userID}/${this.props.meetingID}/attendees`);
         ref.on('value', snapshot => {
             let attendees = snapshot.val();
             let attendeesList = [];
@@ -42,7 +44,11 @@ class Attendees extends Component {
                         </h1>
                     </div>
                 </div>
-                   <AttendeesList userID={this.props.userID} attendees={this.props.displayAttendees} />
+                   <AttendeesList 
+                   userID={this.props.userID}
+                   meetingID={this.props.meetingID}
+                   adminUser={this.props.adminUser}
+                   attendees={this.state.displayAttendees} />
             </div>
         );
     }

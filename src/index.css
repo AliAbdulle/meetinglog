@@ -5,5 +5,8 @@ input, nav-item{
   font-weight: 200;
   line-height: 110%;
 }
-
+.card{
+  font: bold;
+  color: black;
+}
 
