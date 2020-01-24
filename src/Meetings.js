@@ -5,7 +5,7 @@ class Meetings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meetingName: ''
+      meetingName: "" 
     };
 
     this.handleChange = this.handleChange.bind(this);

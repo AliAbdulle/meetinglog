@@ -9,6 +9,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Meetings from "./Meetings";
 import Checkin from "./Checkin";
+import Attendees from "./Attendees";
 
 class App extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigations user={this.state.user} logO  utUser={this.logOutUser} />
+        <Navigations user={this.state.user} logOutUser={this.logOutUser} />
         {this.state.user && (
           <Welcome
             userName={this.state.displayName}
@@ -105,9 +106,14 @@ class App extends Component {
             addMeeting={this.addMeeting}
             userID={this.state.userID}
           />
+          <Attendees
+            path="/Attendees/:userID/:meetingID"
+            AdminUser={this.state.userID}
+
+          />
           <Checkin
             path="/checkin/:userID/:meetingID"
-            
+
           />
           <Register path="/register" registerUser={this.registerUser} />
         </Router>

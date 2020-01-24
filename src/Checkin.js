@@ -55,7 +55,6 @@ class Checkin extends Component {
                   required
                   className="form-control"
                   type="text"
-                  id="displayName"
                   name="displayName"
                   placeholder="Name"
                   value={this.state.displayName}
@@ -71,7 +70,6 @@ class Checkin extends Component {
                   required
                   className="form-control"
                   type="email"
-                  id="email"
                   name="email"
                   placeholder="Email"
                   value={this.state.email}
