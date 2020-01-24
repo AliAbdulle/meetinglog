@@ -36,11 +36,11 @@ class App extends Component {
 
           for (let item in meetings) {
             meetingsList.push({
-              meetings: item,
+              meetingID: item,
               meetingName: meetings[item].meetingName
             });
           }
-          this.setState({
+          this.setState({ 
             meetings: meetingsList,
             howManyMeetings: meetingsList.length
           });
@@ -107,7 +107,7 @@ class App extends Component {
             userID={this.state.userID}
           />
           <Attendees
-            path="/Attendees/:userID/:meetingID"
+            path="/attendees/:userID/:meetingID"
             AdminUser={this.state.userID}
 
           />
