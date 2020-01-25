@@ -16,7 +16,7 @@ class Welcome extends Component {
       ,
         <Link to="/login" className="font-weight-bold text-primary pl-1"
         onClick={e => logOutUser(e)}>
-          logout
+          Logout
         </Link>
       </div>
     );

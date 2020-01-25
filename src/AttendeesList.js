@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GoTrashcan } from "react-icons/go";
+import { GoTrashcan } from 'react-icons/go';
 import firebase from './Firebase';
 
 class AttendeesList extends Component {
@@ -26,11 +26,10 @@ class AttendeesList extends Component {
           key={item.attendeeID}
         >
           <div className="card">
-            {/* <div className="card-body px-3 py-2 d-flex align-items-center justify-content-center"> */}
             <div
               className={
                 "card-body px-3 py-2 d-flex align-items-center" +
-                (admin ? "" : "justify-content-center")
+                (admin ? '': 'justify-content-center')
               }
             >
               {admin && (

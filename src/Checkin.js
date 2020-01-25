@@ -8,8 +8,8 @@ class Checkin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayName: "",
-      email: ""
+      displayName: '',
+      email: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,10 +29,10 @@ class Checkin extends Component {
    .database()
    .ref(`meetings/${this.props.userID}/${this.props.meetingID}/attendees`);
    ref.push({
-       attendees: this.state.displayName,
-       attendeesemail: this.state.email
+       attendeeName: this.state.displayName,
+       attendeeEmail: this.state.email
    })
-   navigate(`attendeed/${this.props.userID}/${this.props.meetingID}`)
+   navigate(`attendees/${this.props.userID}/${this.props.meetingID}`)
   }
   render() {
 
@@ -55,6 +55,7 @@ class Checkin extends Component {
                   required
                   className="form-control"
                   type="text"
+                  id="displayName"
                   name="displayName"
                   placeholder="Name"
                   value={this.state.displayName}
@@ -70,6 +71,7 @@ class Checkin extends Component {
                   required
                   className="form-control"
                   type="email"
+                  id="displayName"
                   name="email"
                   placeholder="Email"
                   value={this.state.email}
