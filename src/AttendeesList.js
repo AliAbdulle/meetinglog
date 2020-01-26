@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GoTrashcan } from 'react-icons/go';
+import { GoTrashcan, GoStar } from 'react-icons/go';
 import firebase from './Firebase';
 
 class AttendeesList extends Component {
@@ -13,8 +13,18 @@ class AttendeesList extends Component {
 
     const ref = firebase.database().ref(`meetings/${adminUser}/${whichMeeting}/attendees/${whichAttendee}`)
     ref.remove();
-  }
+  };
 
+  toggleStar = (e, star, whichMeeting, whichAttendee) => {
+    e.perventDefault();
+    const adminUser = this.props.adminUser;
+    const ref = firebase.database().ref(`meetings/${adminUser}/${whichMeeting}/attebdees/${whichAttendee}/star`)
+    if (star === undefined) {
+      ref.set(true)
+    }else{
+      ref.set(!star);
+    }
+  }
 
   render() {
     const admin = this.props.adminUser === this.props.userID ? true : false;
@@ -34,6 +44,19 @@ class AttendeesList extends Component {
             >
               {admin && (
                 <div className="btn-group pr-2">
+                  <button
+                    className={'btn btn-sm' + (item.star ? 'btn-info' :'btn-outline-secondary')}
+                    title="Delete attendee"
+                    onClick={e =>
+                      this.deleteAttendee(
+                        e,
+                        this.props.meetingID,
+                        item.attendeeID
+                      )
+                    }
+                  >
+                    <GoStar />
+                  </button>
                   <button
                     className="btn btn-sm btn-outline-secondary"
                     title="Delete attendee"
@@ -56,8 +79,8 @@ class AttendeesList extends Component {
         </div>
       );
     });
-
     return (<div className="row justify-content-center">{myAttendees}</div>);
+
   }
 }
 export default AttendeesList;
