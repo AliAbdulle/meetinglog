@@ -20,7 +20,7 @@ class AttendeesList extends Component {
     const adminUser = this.props.adminUser;
     const ref = firebase.database().ref(`meetings/${adminUser}/${whichMeeting}/attebdees/${whichAttendee}/star`)
     if (star === undefined) {
-      ref.set(true)
+      ref.set(true);
     }else{
       ref.set(!star);
     }
@@ -57,6 +57,8 @@ class AttendeesList extends Component {
                   >
                     <GoStar />
                   </button>
+                  <a href={`mailto: ${item.attendeeEmail}`}>
+                  </a>
                   <button
                     className="btn btn-sm btn-outline-secondary"
                     title="Delete attendee"
