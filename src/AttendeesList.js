@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GoTrashcan, GoMail, GoStar, GoMail } from 'react-icons/go';
+import { GoTrashcan, GoMail, GoStar } from 'react-icons/go';
 import firebase from './Firebase';
 
 class AttendeesList extends Component {
