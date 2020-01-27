@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import firebase from "./Firebase";
 import AttendeesList from "./AttendeesList";
-import { FaUndo } from "react-icons/fa";
+import { FaUndo, FaRandom } from "react-icons/fa";
 
 class Attendees extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchQuery: "",
+      allAttendees:[],
       displayAttendees: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.resetQuery = this.resetQuery.bind(this);
+    this.chooseRandom = this.chooseRandom.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +33,7 @@ class Attendees extends Component {
         });
       }
       this.setState({
+          allAttendees: attendeesList,
         displayAttendees: attendeesList
       });
     });
@@ -43,17 +46,26 @@ class Attendees extends Component {
     this.setState({ [itemName]: itemValue });
   }
 
+  chooseRandom(){
+      const rondomAttendee = Math.floor(Math.random()*this.state.allAttendees.lenght);
+      this.resetQuery();
+      this.setState({
+          displayAttendees: [this.state.allAttendees[rondomAttendee]]
+      })
+  }
+
   resetQuery(){
       this.setState({
+          displayAttendees: this.state.allAttendees,
           resetQuery: ""
-      })
+      });
   }
 
   render() {
     const dataFilter = item =>
       item.attendeeName
         .toLowerCase()
-        .match(this.state.searchQuery.toLowerCase() && true);
+        .match(this.state.searchQuery.toLowerCase()) && true;
 
     const filteredAttendees = this.state.displayAttendees.filter(dataFilter);
 
@@ -75,6 +87,12 @@ class Attendees extends Component {
                     onChange={this.handleChange}
                   />
                   <div className="input-group-append">
+                      <button className="btn bn-sm btn-outline-info"
+                      title="Pick a random attendees"
+                      onClick={() => this.chooseRandom()}>
+                          <FaRandom />
+
+                      </button>
                       <button className="btn bn-sm btn-outline-info"
                       title="Reset search"
                       onClick={() => this.resetQuery()}>
