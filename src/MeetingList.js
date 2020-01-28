@@ -4,6 +4,7 @@ import { GoTrashcan, GoListUnordered } from 'react-icons/go';
 import { FaLink } from 'react-icons/fa';
 import { navigate } from "@reach/router";
 
+// creating meeting list component
 class MeetingList extends Component {
     constructor(props) {
         super(props);
