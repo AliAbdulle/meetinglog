@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FormError from "./FormError";
 import firebase from "./Firebase.js";
 
+//Register component allowed the register to access the web
 class Register extends Component {
   constructor(props) {
     super(props);

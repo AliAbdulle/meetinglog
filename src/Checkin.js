@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import firebase from './Firebase';
 import {navigate} from '@reach/router';
 
-
+// allowed the attendee to checked in the meeting
 class Checkin extends Component {
 
   constructor(props) {
