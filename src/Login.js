@@ -3,9 +3,9 @@ import firebase from './Firebase';
 import FormError from './FormError';
 import {navigate} from '@reach/router';
 
-
+// login components
 class Login extends Component {
-
+//constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -17,13 +17,14 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  //the event changing
   handleChange(e) {
     const itemName = e.target.name;
     const itemValue = e.target.value;
 
     this.setState({ [itemName]: itemValue });
   }
-
+//handle submit and getting error
   handleSubmit(e) {
     var registrationInfo = {
       email: this.state.email,
