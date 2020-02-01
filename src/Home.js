@@ -35,8 +35,13 @@ class Home extends Component {
               </span>
             )}
             {user && (
-              <Link to="/meetings" className="btn btn-primary">
+              <Link to="/meetings" className="btn btn-primary mr-2">
                 Meetings
+              </Link>
+            )}
+            {user && (
+              <Link to="/resume" className="btn btn-primary">
+                Resume
               </Link>
             )}
           </div>{" "}
