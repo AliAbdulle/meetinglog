@@ -10,7 +10,10 @@ class Resume extends Component {
         <div className="container">
           <div className="row">
             <div className="jumbotron">
-              
+              <h1 className="text-title">
+                About Me
+              </h1>
+              <p></p>
             </div>
           </div>
           
