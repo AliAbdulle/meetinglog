@@ -13,7 +13,7 @@ class Resume extends Component {
               <h1 className="text-title">
                 About Me
               </h1>
-              <p></p>
+              <p>This meeting is provided my the company name LinkIN Came</p>
             </div>
           </div>
           
