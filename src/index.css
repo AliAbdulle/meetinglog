@@ -10,4 +10,8 @@ input, nav-item{
   font: bold;
   color: black;
 }
-
+.jumbotron{
+  background-color: beige;
+  margin: auto;
+  border-radius: 10px;
+}
