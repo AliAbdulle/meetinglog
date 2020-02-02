@@ -14,6 +14,8 @@ class Resume extends Component {
                 About Me
               </h1>
               <p>This meeting is provided my the company name LinkIN Came</p>
+              <h2> Work Experiences</h2>
+             
             </div>
           </div>
           
