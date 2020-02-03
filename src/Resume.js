@@ -20,6 +20,11 @@ class Resume extends Component {
                   <li>Dell Technology</li>
                   <li>IBM </li>
               </ul>
+              <h2> Education</h2>
+              <ul>
+                  <li>Middle Tennesseee University</li>
+                  <li>Nashville Software School</li>
+              </ul>
             </div>
           </div>
           
