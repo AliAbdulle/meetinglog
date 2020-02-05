@@ -23,6 +23,7 @@ class Resume extends Component {
               <h2> Education</h2>
               <ul>
                   <li>Middle Tennesseee University</li>
+                    <p>Bachlor of Computer Information System</p>
                   <li>Nashville Software School</li>
               </ul>
             </div>
