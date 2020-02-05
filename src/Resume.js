@@ -25,6 +25,7 @@ class Resume extends Component {
                   <li>Middle Tennesseee University</li>
                     <p>Bachlor of Computer Information System</p>
                   <li>Nashville Software School</li>
+                    <p>Web Software Developer</p>
               </ul>
             </div>
           </div>
