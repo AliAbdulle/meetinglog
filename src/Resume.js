@@ -9,7 +9,8 @@ class Resume extends Component {
     return (
         <div className="container">
           <div className="row">
-            <div className="jumbotron">
+            <div className="jumbotron col-lg-12">
+            <div className="col-md-12 justify-content-center "id="text">
               <h1 className="text-title">
                 About Me
               </h1>
@@ -29,7 +30,7 @@ class Resume extends Component {
               </ul>
             </div>
           </div>
-          
+          </div>
         </div>
     );
   }

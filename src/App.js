@@ -64,6 +64,7 @@ class App extends Component {
           userID: FBUser.uid
         });
         navigate("/meetings");
+        navigate("/resume");
       });
     });
   };
@@ -118,7 +119,7 @@ class App extends Component {
 
           />
           <Resume
-            path="/resume/:userID/:meetingID"
+            path="/resume"
 
           />
           <Register path="/register" registerUser={this.registerUser} />
