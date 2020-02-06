@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import Alipic from "./Alipic/png";
 
 class Resume extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Resume extends Component {
           <div className="row">
             <div className="jumbotron col-lg-12">
             <div className="col-md-12 justify-content-center "id="text">
+                {/* <img src={Alipic} alt="Ali Dhobey" /> */}
               <h1 className="text-title">
                 About Me
               </h1>

@@ -10,7 +10,8 @@ import Register from "./Register";
 import Meetings from "./Meetings";
 import Checkin from "./Checkin";
 import Attendees from "./Attendees";
-import Resume from "./Resume"
+import Resume from "./Resume";
+
 
 
 class App extends Component {
